@@ -8,4 +8,5 @@ from django.utils.decorators import method_decorator
 class GitCommitView(View):
     def post(self, request):
         print(request.body)
+        print('hello world')
         return request.body
