@@ -7,6 +7,20 @@ from django.utils.decorators import method_decorator
 @method_decorator(csrf_exempt, name='post')
 class GitCommitView(View):
     def post(self, request):
-        print(request.body)
         print('hello world')
-        return request.body
+
+        print(request.body)
+        context = {
+            'result': request.body,
+            'method': 'post'
+        }
+        return render(request, 'index.html', context=context)
+
+    def get(self, request):
+        print('! method=get')
+        x = 1
+        context = {
+            'result': request.body,
+            'method': 'get'
+        }
+        return render(request, 'index.html', context=context)
